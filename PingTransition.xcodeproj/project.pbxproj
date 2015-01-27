@@ -13,6 +13,11 @@
 		A7AB44BF1A77EAAA00C12D51 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7AB44BE1A77EAAA00C12D51 /* Images.xcassets */; };
 		A7AB44C21A77EAAA00C12D51 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7AB44C01A77EAAA00C12D51 /* LaunchScreen.xib */; };
 		A7AB44CE1A77EAAA00C12D51 /* PingTransitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AB44CD1A77EAAA00C12D51 /* PingTransitionTests.swift */; };
+		A7AB44D91A77F65600C12D51 /* ipad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A7AB44D71A77F65600C12D51 /* ipad.jpg */; };
+		A7AB44DC1A77F85400C12D51 /* NavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AB44DB1A77F85400C12D51 /* NavigationControllerDelegate.swift */; };
+		A7AB44DE1A77F95B00C12D51 /* CircleTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AB44DD1A77F95B00C12D51 /* CircleTransitionAnimator.swift */; };
+		A7AB44E01A78121600C12D51 /* iphone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A7AB44DF1A78121600C12D51 /* iphone.jpg */; };
+		A7DB741C1A782B1C00799567 /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = A7DB741B1A782B1C00799567 /* launch.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +41,11 @@
 		A7AB44C71A77EAAA00C12D51 /* PingTransitionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PingTransitionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7AB44CC1A77EAAA00C12D51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A7AB44CD1A77EAAA00C12D51 /* PingTransitionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingTransitionTests.swift; sourceTree = "<group>"; };
+		A7AB44D71A77F65600C12D51 /* ipad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ipad.jpg; sourceTree = "<group>"; };
+		A7AB44DB1A77F85400C12D51 /* NavigationControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerDelegate.swift; sourceTree = "<group>"; };
+		A7AB44DD1A77F95B00C12D51 /* CircleTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleTransitionAnimator.swift; sourceTree = "<group>"; };
+		A7AB44DF1A78121600C12D51 /* iphone.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iphone.jpg; sourceTree = "<group>"; };
+		A7DB741B1A782B1C00799567 /* launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,12 +87,15 @@
 		A7AB44B41A77EAAA00C12D51 /* PingTransition */ = {
 			isa = PBXGroup;
 			children = (
+				A7DB741D1A782FE700799567 /* Images */,
 				A7AB44B71A77EAAA00C12D51 /* AppDelegate.swift */,
 				A7AB44B91A77EAAA00C12D51 /* ViewController.swift */,
 				A7AB44BB1A77EAAA00C12D51 /* Main.storyboard */,
 				A7AB44BE1A77EAAA00C12D51 /* Images.xcassets */,
 				A7AB44C01A77EAAA00C12D51 /* LaunchScreen.xib */,
 				A7AB44B51A77EAAA00C12D51 /* Supporting Files */,
+				A7AB44DB1A77F85400C12D51 /* NavigationControllerDelegate.swift */,
+				A7AB44DD1A77F95B00C12D51 /* CircleTransitionAnimator.swift */,
 			);
 			path = PingTransition;
 			sourceTree = "<group>";
@@ -110,6 +123,16 @@
 				A7AB44CC1A77EAAA00C12D51 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A7DB741D1A782FE700799567 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				A7DB741B1A782B1C00799567 /* launch.png */,
+				A7AB44D71A77F65600C12D51 /* ipad.jpg */,
+				A7AB44DF1A78121600C12D51 /* iphone.jpg */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +216,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7AB44BD1A77EAAA00C12D51 /* Main.storyboard in Resources */,
+				A7DB741C1A782B1C00799567 /* launch.png in Resources */,
+				A7AB44D91A77F65600C12D51 /* ipad.jpg in Resources */,
+				A7AB44E01A78121600C12D51 /* iphone.jpg in Resources */,
 				A7AB44C21A77EAAA00C12D51 /* LaunchScreen.xib in Resources */,
 				A7AB44BF1A77EAAA00C12D51 /* Images.xcassets in Resources */,
 			);
@@ -213,6 +239,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7AB44BA1A77EAAA00C12D51 /* ViewController.swift in Sources */,
+				A7AB44DE1A77F95B00C12D51 /* CircleTransitionAnimator.swift in Sources */,
+				A7AB44DC1A77F85400C12D51 /* NavigationControllerDelegate.swift in Sources */,
 				A7AB44B81A77EAAA00C12D51 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,6 +435,7 @@
 				A7AB44D31A77EAAA00C12D51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A7AB44D41A77EAAA00C12D51 /* Build configuration list for PBXNativeTarget "PingTransitionTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +444,7 @@
 				A7AB44D61A77EAAA00C12D51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

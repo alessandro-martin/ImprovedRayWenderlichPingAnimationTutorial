@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  PingTransition
-//
-//  Created by Alessandro on 27/01/15.
-//  Copyright (c) 2015 Alessandro. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain
