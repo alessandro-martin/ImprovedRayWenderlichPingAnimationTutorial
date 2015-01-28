@@ -24,7 +24,6 @@ class CircleTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning 
 		let width = CGRectGetWidth(toViewController.view.bounds)
 		let height = CGRectGetHeight(toViewController.view.bounds)
 		let largerDimension = max(width, height)
-		let smallerDimension = min(width, height)
 		var xOffset:CGFloat = 0.0
 		var yOffset:CGFloat = 0.0
 		if width > height {
@@ -48,16 +47,20 @@ class CircleTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning 
 		maskLayerAnimation.fromValue = circleMaskPathInitial.CGPath
 		maskLayerAnimation.toValue = circleMaskPathFinal.CGPath
 		maskLayerAnimation.duration = self.transitionDuration(transitionContext)
+		//6.1 Setting self as delegate of this animation only since it's the one
+		//    that will take longer to execute
 		maskLayerAnimation.delegate = self
 		maskLayer.addAnimation(maskLayerAnimation, forKey: "path")
 		
 		//
 		//7 Extra animations to move and scale layers
 		//
+		//7.1 The view animations will be shorter so rectangle frames don't
+		//    catch up with the round mask and spoil the effect by clipping it
 		let toAnimationsTimeRatio = 0.50
 		let fromAnimationsTimeRatio = 0.90
-		let p = CGPointMake(button.center.x + 2 * (width - button.center.x),
-			button.center.y - 2 * (button.center.y))
+		let p = CGPointMake((2 * width) - button.center.x,
+			-button.center.y)
 		
 		let moveToLayerAnimation = CABasicAnimation(keyPath: "position")
 		moveToLayerAnimation.fromValue = NSValue(CGPoint:p)
@@ -74,7 +77,7 @@ class CircleTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning 
 		
 		let moveFromLayerAnimation = CABasicAnimation(keyPath: "position")
 		moveFromLayerAnimation.fromValue = NSValue(CGPoint:fromViewController.view.center)
-		moveFromLayerAnimation.toValue = NSValue(CGPoint:CGPoint(x: -500, y: 1000))
+		moveFromLayerAnimation.toValue = NSValue(CGPoint:CGPoint(x: -width, y: height * 2))
 		moveFromLayerAnimation.duration = self.transitionDuration(transitionContext) * fromAnimationsTimeRatio
 		fromViewController.view.layer.addAnimation(moveFromLayerAnimation, forKey: "position")
 		
