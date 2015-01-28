@@ -14,7 +14,7 @@ class ViewController: UIViewController {
 		// Pop-like effect for the button.
 		self.button.layer.transform = CATransform3DMakeScale(0.0, 0.0, 1)
 		self.button.hidden = false
-		UIView.animateWithDuration(0.5, delay: 0.7, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.5, options: .CurveEaseInOut, animations: { () -> Void in
+		UIView.animateWithDuration(0.5, delay: 0.4, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.5, options: .CurveEaseInOut, animations: { () -> Void in
 			self.button.layer.transform = CATransform3DMakeScale(1, 1, 1)
 			}, completion: nil)
 	}
@@ -25,7 +25,7 @@ class ViewController: UIViewController {
 	}
 	
 	@IBAction func circleTapped(sender:UIButton) {
-		sender.hidden = true
+		self.button.hidden = true
 		self.navigationController?.popViewControllerAnimated(true)
 	}
 

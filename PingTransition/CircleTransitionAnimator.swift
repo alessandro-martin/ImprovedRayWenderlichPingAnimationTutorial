@@ -5,7 +5,7 @@ class CircleTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning 
 	
 	func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
 		// Shorter animation duration to achieve an effect more similar to Ping's
-		return 2.5
+		return 0.40
 	}
 	
 	func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
@@ -21,7 +21,6 @@ class CircleTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning 
 		//4 
 		let circleMaskPathInitial = UIBezierPath(ovalInRect: button.frame)
 		//4.1 Choosing the biggest bounds dimension to ensure consistency
-		//when switching device orientation
 		let width = CGRectGetWidth(toViewController.view.bounds)
 		let height = CGRectGetHeight(toViewController.view.bounds)
 		let largerDimension = max(width, height)
@@ -55,35 +54,39 @@ class CircleTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning 
 		//
 		//7 Extra animations to move and scale layers
 		//
+		let toAnimationsTimeRatio = 0.50
+		let fromAnimationsTimeRatio = 0.90
+		let p = CGPointMake(button.center.x + 2 * (width - button.center.x),
+			button.center.y - 2 * (button.center.y))
+		
 		let moveToLayerAnimation = CABasicAnimation(keyPath: "position")
-		moveToLayerAnimation.fromValue = NSValue(CGPoint:fromViewController.button.center)
+		moveToLayerAnimation.fromValue = NSValue(CGPoint:p)
 		moveToLayerAnimation.toValue = NSValue(CGPoint:containerView.center)
-		moveToLayerAnimation.duration = self.transitionDuration(transitionContext) * 0.6
+		moveToLayerAnimation.duration = self.transitionDuration(transitionContext) * toAnimationsTimeRatio
 		toViewController.view.layer.addAnimation(moveToLayerAnimation, forKey: "position")
 		
 		let scaleToLayerAnimation = CABasicAnimation(keyPath:"transform.scale")
 		scaleToLayerAnimation.fromValue = 0.0
 		scaleToLayerAnimation.toValue = 1.0
-		scaleToLayerAnimation.duration = self.transitionDuration(transitionContext) * 0.6
+		scaleToLayerAnimation.duration = self.transitionDuration(transitionContext) * toAnimationsTimeRatio
 		scaleToLayerAnimation.fillMode = kCAFillModeForwards
 		toViewController.view.layer.addAnimation(scaleToLayerAnimation, forKey: "transform.scale")
 		
 		let moveFromLayerAnimation = CABasicAnimation(keyPath: "position")
 		moveFromLayerAnimation.fromValue = NSValue(CGPoint:fromViewController.view.center)
 		moveFromLayerAnimation.toValue = NSValue(CGPoint:CGPoint(x: -500, y: 1000))
-		moveFromLayerAnimation.duration = self.transitionDuration(transitionContext) * 0.6
+		moveFromLayerAnimation.duration = self.transitionDuration(transitionContext) * fromAnimationsTimeRatio
 		fromViewController.view.layer.addAnimation(moveFromLayerAnimation, forKey: "position")
 		
 		let scaleFromLayerAnimation = CABasicAnimation(keyPath:"transform.scale")
 		scaleFromLayerAnimation.fromValue = 1.0
-		scaleFromLayerAnimation.toValue = 5.0
-		scaleFromLayerAnimation.duration = self.transitionDuration(transitionContext) * 0.6
-		scaleFromLayerAnimation.fillMode = kCAFillModeForwards
+		scaleFromLayerAnimation.toValue = 7.0
+		scaleFromLayerAnimation.duration = self.transitionDuration(transitionContext) * fromAnimationsTimeRatio
 		fromViewController.view.layer.addAnimation(scaleFromLayerAnimation, forKey: "transform.scale")
 	}
 	
 	override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
 		self.transitionContext?.completeTransition(!self.transitionContext!.transitionWasCancelled())
-		self.transitionContext?.viewControllerForKey(UITransitionContextFromViewControllerKey)?.view.layer.mask = nil;
+		self.transitionContext?.viewControllerForKey(UITransitionContextFromViewControllerKey)?.view.layer.mask = nil
 	}
 }
